@@ -1,17 +1,16 @@
+require('dotenv').config();
+const chalk = require('chalk');
 const express = require('express');
 
-require('dotenv').config();
+const vendorsRouter = require('./routes/modvendors-routes')
 
 const port = process.env.PORT;
 
 const app = express()
 
-app.get('/',function(request,response){
-	console.log(__dirname + '/public/index.html')
-	//response.send('hello')
-	//response.sendFile(__dirname + '/public/index.html');
-	response.redirect(307, process.env.FRONTEND_URL)
-})
+app.use(express.json())
+
+app.use('/', vendorsRouter);
 
 app.get('/hola/:name', function(request, response){
 	const name = request.params.name;
