@@ -83,7 +83,21 @@ const updateVendor = (request,response) => {
 };
 
 //Delete
-const deleteVendor = () => {};
+const deleteVendor = (request, response) => {
+    const id = request.params.id;
+    if (!id){
+        return response.status(400).send({ error: 'No existe el vendedor para eliminar'});
+    }
+
+    Vendor.remove({ _id:id }, (error, result) => {
+        if (error){
+            return response.status(500).send({ error });
+        }
+        return response.send(result);
+
+    });
+
+};
 
 module.exports = {
     createVendor,
