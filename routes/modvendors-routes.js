@@ -5,5 +5,6 @@ const { createVendor, readVendors } = require('../controllers/modvendors-control
 const router = express.Router();
 router.post('/', createVendor);
 router.get('/', readVendors);
+router.get('/:id', readVendors);
 
 module.exports = router;
