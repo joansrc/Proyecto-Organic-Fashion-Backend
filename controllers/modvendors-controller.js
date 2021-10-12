@@ -51,14 +51,36 @@ const readVendors = (request, response) => {
         if (error){
             return response.status(500).send({ error })
         }
-        return response.send(result)
-    })
+        return response.send(result);
+    });
 
     //return response.send({ok:true, vendors});
 };
 
 //Patch
-const updateVendor = () => {};
+const updateVendor = (request,response) => {
+    const id = request.params.id;
+    if (!id){
+        return response.status(400).send({ error: 'No existe el vendedor'});
+    }
+
+    Vendor.updateOne({ _id:id }, request.body, (error, result) => {
+        if (error){
+            return response.status(500).send({ error });
+        }
+
+        Vendor.find({ _id:id }, (error, result) => {
+            if (error){
+                return response.status(500).send({ error })
+            }
+            return response.send(result);
+        });
+
+
+        //return response.send(result);
+    });
+
+};
 
 //Delete
 const deleteVendor = () => {};
