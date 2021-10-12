@@ -12,7 +12,7 @@ mongoose.set('runValidators', true);
 const db = mongoose.connect(mongoUrl, {},
 (error) => {
   if (error) {
-    console.log('Error conectando a mongo');
+    console.log(`Error conectando a mongo: ${error}`);
   } else {
     console.log('Conectado a mongo');
   }
