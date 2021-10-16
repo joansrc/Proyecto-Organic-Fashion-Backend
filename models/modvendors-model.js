@@ -12,7 +12,18 @@ const vendorSchema = new Schema({
     type: String,
     required: true,
   },
-  //done: Boolean,
+  celular: {
+    type: String,
+    required: true,
+  },
+  edad: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model('vendors', vendorSchema);
