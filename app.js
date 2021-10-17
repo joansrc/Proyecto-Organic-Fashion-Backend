@@ -6,6 +6,7 @@ const cors =require('cors');
 require('./driver/mongo-connection');
 
 const vendorsRouter = require('./routes/modvendors-routes');
+const productsRouter = require('./routes/modproducts-routes');
 
 const port = process.env.PORT;
 
@@ -15,6 +16,7 @@ app.use(cors());
 app.use(express.json())
 
 app.use('/api/vendors', vendorsRouter);
+app.use('/api/Products', productsRouter);
 /*
 app.get('/hola/:name', function(request, response){
 	const name = request.params.name;
