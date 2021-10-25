@@ -62,7 +62,8 @@ const createUserFromData = async (response, user) => {
 const createUser = async (request, response) => {
   const user = request.body;
   const resultado = await createUserFromData(response, user);
-  return response.status(resultado.status || 200).send(resultado);
+  //return response.status(resultado.status || 200).send(resultado);
+  return response.status(200).send(resultado);
 };
 
 // GET
