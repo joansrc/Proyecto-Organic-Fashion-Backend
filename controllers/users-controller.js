@@ -110,14 +110,14 @@ const authUser = async (request, response) => {
 
     // 3. generar un token
     const token = jwt.sign({ id: userFromDb._id }, process.env.JWT_SECRET, {
-      expiresIn: '1h',
+      expiresIn: '3h',
     });
     return response.send({ ok: isValid, token });
   }
 
   return response.status(404).send({
     ok: false,
-    error: 'El usuario no est´á registrado',
+    error: 'El usuario no está registrado',
   });
 };
 
