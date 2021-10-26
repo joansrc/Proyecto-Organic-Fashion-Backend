@@ -8,6 +8,7 @@ require('./driver/mongo-connection');
 const vendorsRouter = require('./routes/modvendors-routes');
 const productsRouter = require('./routes/modproducts-routes');
 const usersRouter = require('./routes/users-routes');
+const ventasRouter = require('./routes/modventas-routes')
 
 const port = process.env.PORT;
 
@@ -19,6 +20,7 @@ app.use(express.json())
 app.use('/api/vendors', vendorsRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/ventas', ventasRouter);
 /*
 app.get('/hola/:name', function(request, response){
 	const name = request.params.name;
