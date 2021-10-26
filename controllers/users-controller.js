@@ -180,12 +180,12 @@ const updateUser = (request,response) => {
       return response.status(400).send({ error: 'No existe el usuario'});
   }
 
-  Vendor.updateOne({ _id:id }, request.body, (error, result) => {
+  User.updateOne({ _id:id }, request.body, (error, result) => {
       if (error){
           return response.status(500).send({ error });
       }
 
-      Vendor.find({ _id:id }, (error, result) => {
+      User.find({ _id:id }, (error, result) => {
           if (error){
               return response.status(500).send({ error })
           }
@@ -205,7 +205,7 @@ const deleteUser = (request, response) => {
       return response.status(400).send({ error: 'No existe el usuario para eliminar'});
   }
 
-  Vendor.remove({ _id:id }, (error, result) => {
+  User.remove({ _id:id }, (error, result) => {
       if (error){
           return response.status(500).send({ error });
       }
