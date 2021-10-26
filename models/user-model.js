@@ -23,7 +23,7 @@ const userSchema = new Schema({
   role: {
     type: String,
     default: 'PENDING',
-    enum: ['ADMIN', 'SALES', 'PENDING'],
+    enum: ['ADMIN', 'VENDEDOR', 'PENDING'],
   }, // vendedor, administrador, pendiente
   withGoogle: {
     type: Boolean,
