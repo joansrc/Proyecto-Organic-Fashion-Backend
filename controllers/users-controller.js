@@ -173,10 +173,54 @@ const authWithGoogle = async (request, response) => {
   }
 };
 
+//Patch
+const updateUser = (request,response) => {
+  const id = request.params.id;
+  if (!id){
+      return response.status(400).send({ error: 'No existe el usuario'});
+  }
+
+  Vendor.updateOne({ _id:id }, request.body, (error, result) => {
+      if (error){
+          return response.status(500).send({ error });
+      }
+
+      Vendor.find({ _id:id }, (error, result) => {
+          if (error){
+              return response.status(500).send({ error })
+          }
+          return response.send(result);
+      });
+
+
+      //return response.send(result);
+  });
+
+};
+
+//Delete
+const deleteUser = (request, response) => {
+  const id = request.params.id;
+  if (!id){
+      return response.status(400).send({ error: 'No existe el usuario para eliminar'});
+  }
+
+  Vendor.remove({ _id:id }, (error, result) => {
+      if (error){
+          return response.status(500).send({ error });
+      }
+      return response.send(result);
+
+  });
+
+};
+
 module.exports = {
   createUser,
   readUsers,
   readUserData,
+  updateUser,
+  deleteUser,
   authUser,
   authWithGoogle,
 };

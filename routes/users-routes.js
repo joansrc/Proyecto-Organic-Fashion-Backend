@@ -6,6 +6,8 @@ const {
   readUserData,
   authUser,
   authWithGoogle,
+  updateUser,
+  deleteUser,
 } = require('./../controllers/users-controller');
 
 // Router
@@ -18,7 +20,8 @@ router.get('/', readUsers);
 router.get('/me', [validateUser], readUserData);
 
 router.get('/:id', readUsers);
-
+router.patch('/:id', updateUser);
+router.delete('/:id', deleteUser);
 router.post('/auth/', authUser);
 router.post('/auth/google', authWithGoogle);
 
